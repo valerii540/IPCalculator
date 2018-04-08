@@ -18,6 +18,7 @@ public:
 private:
     Ui::win *ui;
     unsigned short int mask;
+    QStringList IP_DecimalList;
 
 
 
