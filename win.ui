@@ -14,7 +14,7 @@
    <string>win</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton_calc">
+   <widget class="QPushButton" name="pushButton_compute">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -444,7 +444,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="label_sl">
     <property name="geometry">
      <rect>
       <x>290</x>

@@ -17,16 +17,12 @@ public:
 
 private:
     Ui::win *ui;
-    unsigned short int mask;
-    QStringList IP_DecimalList;
 
-
-
-    void determineType(QString&);
-    void determineNet(QString&);
+    void calculate(QString&);
+    QString binaryOctetsToDecimal(QString&);
 
 private slots:
-    void press_calculate();
+    void press_compute();
 };
 
 #endif // WIN_H
