@@ -56,7 +56,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>type</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -104,7 +104,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>host quantity</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -152,7 +152,7 @@
 }</string>
       </property>
       <property name="text">
-       <string>net</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -196,7 +196,7 @@
 }</string>
       </property>
       <property name="text">
-       <string>FH</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -240,7 +240,7 @@
 }</string>
       </property>
       <property name="text">
-       <string>LH</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -284,7 +284,7 @@
 }</string>
       </property>
       <property name="text">
-       <string>broad</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -344,7 +344,7 @@
 }</string>
       </property>
       <property name="text">
-       <string>mask</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
