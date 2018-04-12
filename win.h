@@ -20,6 +20,7 @@ private:
 
     void calculate(QString&);
     QString binaryOctetsToDecimal(QString&);
+    bool checkInput(QStringList&);
 
 private slots:
     void press_compute();

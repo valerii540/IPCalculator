@@ -22,13 +22,19 @@ void win::press_compute()
 {
     QStringList IP_DecimalList = ui->lineEdit_IP->text().split('.');
 
+    // Check input
+    if(!checkInput(IP_DecimalList))
+    {
+        ui->label_net->setText("Not valid input");
+        return;
+    }
 
     // Binarize decimal octets
-    QStringList IPbinaryList;
-    foreach (QString ip, IP_DecimalList)
-        IPbinaryList.append(QString::fromStdString(bitset<8>(ip.toInt()).to_string()));
+    QStringList IP_BinaryList;
+    foreach (QString octet, IP_DecimalList)
+        IP_BinaryList.append(QString::fromStdString(bitset<8>(octet.toInt()).to_string()));
 
-    QString IPbinary = IPbinaryList.join("");
+    QString IPbinary = IP_BinaryList.join("");
 
     calculate(IPbinary);
 }
@@ -94,3 +100,24 @@ QString win::binaryOctetsToDecimal(QString& IPbinary)
     return netAddressList.join(".");
 }
 
+bool win::checkInput(QStringList& IP_DecimalList)
+{
+    // Check mask
+    int mask = ui->lineEdit_Mask->text().toInt();
+    if(mask < 0 || mask > 28){
+        qDebug("Mask not valid");
+        return false;
+    }
+
+    // Check IP
+    foreach (QString octet_str, IP_DecimalList)
+    {
+        int octet = octet_str.toInt();
+        if(octet < 0 || octet > 255){
+            qDebug("IP not valid");
+            return false;
+        }
+    }
+
+    return true;
+}
