@@ -18,6 +18,7 @@ public:
 private:
     Ui::win *ui;
 
+    void clearOutputs();
     void calculate(QString&);
     QString binaryOctetsToDecimal(QString&);
     bool checkInput(QStringList&);

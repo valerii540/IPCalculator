@@ -20,6 +20,8 @@ win::~win()
 
 void win::press_compute()
 {
+    clearOutputs();
+
     QStringList IP_DecimalList = ui->lineEdit_IP->text().split('.');
 
     // Check input
@@ -37,6 +39,17 @@ void win::press_compute()
     QString IPbinary = IP_BinaryList.join("");
 
     calculate(IPbinary);
+}
+
+void win::clearOutputs()
+{
+    ui->label_type->setText("");
+    ui->label_hostQuantity->setText("");
+    ui->label_net->setText("");
+    ui->label_FH->setText("");
+    ui->label_LH->setText("");
+    ui->label_broad->setText("");
+    ui->label_mask->setText("");
 }
 
 void win::calculate(QString& IPbinary)
@@ -102,14 +115,17 @@ QString win::binaryOctetsToDecimal(QString& IPbinary)
 
 bool win::checkInput(QStringList& IP_DecimalList)
 {
-    // Check mask
+    // ########### Check mask #############
     int mask = ui->lineEdit_Mask->text().toInt();
     if(mask < 0 || mask > 28){
         qDebug("Mask not valid");
         return false;
     }
 
-    // Check IP
+    // ############ Check IP #############
+    if(IP_DecimalList.length() != 4)
+        return false;
+
     foreach (QString octet_str, IP_DecimalList)
     {
         int octet = octet_str.toInt();
