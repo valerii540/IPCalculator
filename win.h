@@ -18,13 +18,16 @@ public:
 private:
     Ui::win *ui;
 
-    void clearOutputs();
-    void calculate(QString&);
+    void    clearOutputs();
+
+    void    calculateBase(QString&);
     QString binaryOctetsToDecimal(QString&);
-    bool checkInput(QStringList&);
+    void    calculateDetails(QStringList&);
+
+    bool    checkInput(QStringList&);
 
 private slots:
-    void press_compute();
+    void    press_compute();
 };
 
 #endif // WIN_H

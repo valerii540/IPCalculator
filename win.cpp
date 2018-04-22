@@ -38,7 +38,8 @@ void win::press_compute()
 
     QString IPbinary = IP_BinaryList.join("");
 
-    calculate(IPbinary);
+    calculateBase(IPbinary);
+    calculateDetails(IP_DecimalList);
 }
 
 void win::clearOutputs()
@@ -50,9 +51,12 @@ void win::clearOutputs()
     ui->label_LH->setText("");
     ui->label_broad->setText("");
     ui->label_mask->setText("");
+
+    ui->lineEdit_Kind->setText("");
+    ui->lineEdit_Class->setText("");
 }
 
-void win::calculate(QString& IPbinary)
+void win::calculateBase(QString& IPbinary)
 {
     unsigned short int mask = ui->lineEdit_Mask->text().toInt();
 
@@ -99,6 +103,9 @@ void win::calculate(QString& IPbinary)
     QString fullMask = QString("1").repeated(mask) + QString("0").repeated(32-mask);
     fullMask = binaryOctetsToDecimal(fullMask);
     ui->label_mask->setText(fullMask);
+
+    //#####################################################
+
 }
 
 QString win::binaryOctetsToDecimal(QString& IPbinary)
@@ -112,6 +119,27 @@ QString win::binaryOctetsToDecimal(QString& IPbinary)
 
     return netAddressList.join(".");
 }
+
+void win::calculateDetails(QStringList& IP_DecimalList)
+{
+    // ############## IP KIND ###############
+    int mask = ui->lineEdit_Mask->text().toInt();
+    int octet_1 = IP_DecimalList[0].toInt();
+    int octet_2 = IP_DecimalList[1].toInt();
+
+    /* Private networks:
+     * 10.0.0.0/8
+     * 172.16-31.0.0/12
+     * 192.168.0.0/16
+     */
+    if((octet_1 == 10 && mask >= 8) ||
+            (octet_1 == 172 && octet_2 >=16 && octet_2 <= 31 && mask >= 12) ||
+            (octet_1 == 192 && octet_2 == 168 && mask >= 16))
+        ui->lineEdit_Kind->setText("Private");
+    else
+        ui->lineEdit_Kind->setText("Public");
+}
+
 
 bool win::checkInput(QStringList& IP_DecimalList)
 {
