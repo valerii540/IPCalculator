@@ -145,7 +145,7 @@ bool win::checkInput(QStringList& IP_DecimalList)
 {
     // ########### Check mask #############
     int mask = ui->lineEdit_Mask->text().toInt();
-    if(mask < 0 || mask > 28){
+    if(mask < 0 || mask > 30){
         qDebug("Mask not valid");
         return false;
     }
