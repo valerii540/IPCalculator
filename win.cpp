@@ -138,8 +138,27 @@ void win::calculateDetails(QStringList& IP_DecimalList)
         ui->lineEdit_Kind->setText("Private");
     else
         ui->lineEdit_Kind->setText("Public");
-}
 
+    // ############### NETWORK CLASS #########
+    switch (mask) {
+    case 8:
+        ui->lineEdit_Class->setText("A");
+        break;
+    case 16:
+        ui->lineEdit_Class->setText("B");
+        break;
+    case 24:
+        ui->lineEdit_Class->setText("C");
+        break;
+    default:
+        if(octet_1 >= 224 && octet_1 <= 239)
+            ui->lineEdit_Class->setText("D");
+        else if (octet_1 >=240 && octet_1 <= 255)
+            ui->lineEdit_Class->setText("E");
+        else
+            ui->lineEdit_Class->setText("Not classful network");
+    }
+}
 
 bool win::checkInput(QStringList& IP_DecimalList)
 {
