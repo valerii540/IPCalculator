@@ -15,4 +15,4 @@ Simple IPv4 calculator based on C++ and Qt framework
 3. Push "Compute".
 
 ## Image
-![alt text](https://github.com/valera540/IPCalculator/blob/master/image.png)
+![alt text](https://github.com/valera540/IPCalculator/blob/master/image1.png)
